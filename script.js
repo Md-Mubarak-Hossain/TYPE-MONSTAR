@@ -107,10 +107,10 @@ const start = () => {
   countdownOverlay.style.display = "flex";
 
   const startCountdown = setInterval(() => {
-    countdownOverlay.innerHTML = `<h1>${count}</h1>`;
-
+    countdownOverlay.innerHTML = `<h1 id="zero-reomve">${count}</h1>`;
     // finished timer
-    if (count == 0) {
+    if (count < 0) {
+      document.getElementById("zero-reomve").innerText = '';//remove zero....
       // -------------- START TYPING -----------------
       document.addEventListener("keydown", typeController);
       countdownOverlay.style.display = "flex";
