@@ -25,11 +25,14 @@ fetch("./texts.json")
 const typeController = (e) => {
   const newLetter = e.key;
 
+
   // Handle backspace press
   if (newLetter == "Backspace") {
+    errorCount++;
     userText = userText.slice(0, userText.length - 1);
     return display.removeChild(display.lastChild);
   }
+
 
   // these are the valid character we are allowing to type
   const validLetters =
@@ -83,7 +86,7 @@ const gameOver = () => {
   resultModal.innerHTML += `
     <h1>Finished!</h1>
     <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
-    <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
+    <p>You made <span  class="bold red">${errorCount}</span> mistakes</p>
     <button onclick="closeModal()">Close</button>
   `;
 

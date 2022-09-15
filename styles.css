@@ -62,7 +62,7 @@ body {
 
 #result {
   margin: 100px 500px;
-  position: absolute;
+  position: fixed;
   top: 10%;
   left: 10%;
   transform: translate(-50%, -50%);
