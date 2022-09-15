@@ -194,3 +194,25 @@ button {
     flex-direction: column;
   }
 }
+
+@media only screen and (min-width: 701px) {
+  .box-container {
+    padding: 0 20px;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .card {
+    height: 200px;
+    flex-direction: column;
+
+
+  }
+
+
+  #histories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+}
