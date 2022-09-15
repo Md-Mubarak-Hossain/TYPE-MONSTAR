@@ -242,7 +242,7 @@ button {
 
   .card1 {
     border-radius: 10px;
-    height: 400px;
+    min-height: 300px;
     margin: 10px;
     padding: 10px;
     flex-direction: column;
