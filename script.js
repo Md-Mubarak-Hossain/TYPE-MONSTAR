@@ -2,8 +2,10 @@ const display = document.getElementById("display");
 const question = document.getElementById("question");
 const startBtn = document.getElementById("start");
 const countdownOverlay = document.getElementById("countdown");
+
 const resultModal = document.getElementById("result");
 const modalBackground = document.getElementById("modal-background");
+
 
 // variables
 let userText = "";
@@ -76,7 +78,7 @@ const gameOver = () => {
   // clear user text
   display.innerHTML = "";
   // make it inactive
-  display.classList.add("inactive");
+  // display.classList.add("inactive");
   // show result
   resultModal.innerHTML += `
     <h1>Finished!</h1>
@@ -91,12 +93,12 @@ const gameOver = () => {
   startTime = null;
   errorCount = 0;
   userText = "";
-  display.classList.add("inactive");
+  // display.classList.add("inactive");
 };
 
 const closeModal = () => {
-  modalBackground.classList.toggle("hidden");
   resultModal.classList.toggle("hidden");
+  modalBackground.classList.toggle("hidden");
 };
 
 const start = () => {
@@ -107,24 +109,27 @@ const start = () => {
   countdownOverlay.style.display = "flex";
 
   const startCountdown = setInterval(() => {
-    countdownOverlay.innerHTML = `<h1 id="zero-reomve">${count}</h1>`;
+    countdownOverlay.innerHTML = `<h1>${count}</h1>`;
     // finished timer
-    if (count < 0) {
-      document.getElementById("zero-reomve").innerText = '';//remove zero....
+    if (count === 0) {
       // -------------- START TYPING -----------------
       document.addEventListener("keydown", typeController);
-      countdownOverlay.style.display = "flex";
+      // ok.....
+      countdownOverlay.style.display = "none";
       display.classList.remove("inactive");
-
       clearInterval(startCountdown);
       startTime = new Date().getTime();
     }
     count--;
+
   }, 1000);
 };
 
 // START Countdown
-startBtn.addEventListener("click", start);
+startBtn.addEventListener("click", function () {
+  start();
+
+});
 
 // If history exists, show it
 displayHistory();
@@ -135,5 +140,5 @@ setInterval(() => {
   const timeSpent = (currentTime - startTime) / 1000;
 
 
-  document.getElementById("show-time").innerHTML = `${startTime ? timeSpent : 0} seconds`;
+  document.getElementById("show-time").innerHTML = `${startTime ? parseInt(timeSpent) : 0} seconds`;
 }, 1000);
